@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1920"
+   height="1920"
+   viewBox="0 0 507.99999 508"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   sodipodi:docname="Apostrophe-3-starter.svg"
+   inkscape:export-filename="Apostrophe-3-starter.png"
+   inkscape:export-xdpi="25.6"
+   inkscape:export-ydpi="25.6"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.28065372"
+     inkscape:cx="404.41295"
+     inkscape:cy="951.3503"
+     inkscape:window-width="1629"
+     inkscape:window-height="992"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1143">
+      <stop
+         style="stop-color:#8400b0;stop-opacity:1;"
+         offset="0"
+         id="stop1141" />
+      <stop
+         style="stop-color:#470063;stop-opacity:1;"
+         offset="1"
+         id="stop1139" />
+    </linearGradient>
+    <rect
+       x="33.295075"
+       y="38.051515"
+       width="1864.5242"
+       height="1859.7678"
+       id="rect63" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1143"
+       id="radialGradient1145"
+       cx="254"
+       cy="254"
+       fx="254"
+       fy="254"
+       r="254"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.92948012,0,0,1.2264059,17.91205,-57.507106)" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Background">
+    <rect
+       style="fill:url(#radialGradient1145);stroke:#ffffff;stroke-width:0.285096;fill-opacity:1"
+       id="rect436"
+       width="507.7149"
+       height="507.7149"
+       x="0.14254779"
+       y="0.14254779" />
+  </g>
+  <g
+     inkscape:label="Apostrophe"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="’"
+       transform="matrix(1.2114621,0,0,1.2114621,-46.073008,-89.217862)"
+       id="text61"
+       style="font-size:40px;line-height:1.25;word-spacing:0px;white-space:pre;shape-inside:url(#rect63);fill:#ffffff;stroke:#ef03ff;stroke-opacity:1">
+      <path
+         d="m 165.13492,458.02879 c 93.44,-7.68 203.52,-80.64 203.52,-211.2 0,-74.24 -53.76,-138.24 -129.28,-138.24 -61.44,0 -112.64,44.8 -112.64,111.36 0,55.04 43.52,99.84 102.4,99.84 28.16,0 51.2,-15.36 62.72,-34.56 0,62.72 -32,139.52 -125.44,166.4 0,1.28 -1.28,5.12 -1.28,6.4 z"
+         style="font-size:1280px;font-family:'Hera Big';-inkscape-font-specification:'Hera Big, Normal';fill:#ffffff;stroke:#ef03ff;stroke-opacity:1"
+         id="path380" />
+    </g>
+  </g>
+</svg>
