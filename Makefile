@@ -3,6 +3,7 @@
 # Set variables needed for the specific project
 #
 REPO_UPDATE_COMMAND											=	git pull
+FOSSIL_COMMIT_CHECKSUM_FILE							= manifest.uuid
 
 NPM_INSTALL_COMMAND											= npm install
 NPM_BUILD_COMMAND												= npm run build
@@ -49,6 +50,11 @@ help:
 run:
 	@echo "\n===> Locally running Apostrophe in PRODUCTION mode...\n"
 	npm -- run serve
+
+link-release-id-to-fossil-manifest-uuid:
+	@echo "\n===> Linking ./repo-id file to Fossil's manifest.uuid, containing the commit checksum...\n"
+	ln -s $(FOSSIL_COMMIT_CHECKSUM_FILE) release-id
+	@echo "\n===> Successfully linked ./repo-id to Fossil's manifest.uuid, containing the commit checksum.\n"
 
 run-dev:
 	@echo "\n===> Locally running Apostrophe in DEVELOPMENT mode...\n"

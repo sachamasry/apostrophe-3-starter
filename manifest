@@ -1,7 +1,7 @@
-C Updated\sMakefile\swith\sdevelopment\sserver\sport
-D 2022-06-21T17:21:47.205
+C Updated\sMakefile\swith\starget\sto\screate\ssymbolic\slink\sfrom\sFossil's\smanifest.uuid\sto\sApostrophe's\sexpectee\srelease-id\sfile.
+D 2022-06-21T17:34:23.099
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile 60b3d1bc3949a8169c383cc2c35756b83cbb3ffe2ae21ca99cd149cfd4b97aa0
+F Makefile d801f6f650c8dbc0aaa354bb896a3e7007a626f1f6137e2f561bb6b8b0d5c397
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -147,8 +147,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 20c38fef3f8b25d48cc6d5d98c889c066dfa2761eecedaf15294b83328d9db0f
-R 7c482f3a676e4b39663d52696aa31940
+P 80c0dc24c5f9d6520d3478eb79722f95e29c8ca69754089fd7b3d958c31b7335
+R b4aac82373b69620598be30efe346193
 U sacha
-Z c4c9e81a75429bf4ca6c33e20ba6206a
+Z b6d5c2f4207f4c183d446cbfa1b6c8c9
 # Remove this line to create a well-formed Fossil manifest.
