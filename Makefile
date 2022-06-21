@@ -42,6 +42,7 @@ test:
 help:
 	@echo "Make options help: "
 	@echo "    run											Run production server"
+	@echo "    link-release-id-to-fossil-manifest-uuid		Link Apostrophe's release-id file to Fossil SCM's manifest.uuid"
 	@echo "    run-dev									Run development server"
 	@echo "    help-updates							Get help with update directives"
 	@echo "    help-db									Get help with database directives"
