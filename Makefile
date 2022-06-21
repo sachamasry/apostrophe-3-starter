@@ -48,6 +48,7 @@ help:
 	@echo "    help-db									Get help with database directives"
 	@echo "    help-filesystem					Get help with Apostrophe instance filesystem directives"
 	@echo "    add-admin-user						Add administrative user to Apostrophe instance. Use 'make NAME=user-name add-admin-user' when invoking"
+	@echo "		 install-express-configuration		Install express configuration file"
 
 run:
 	@echo "\n===> Locally running Apostrophe in PRODUCTION mode...\n"
@@ -66,6 +67,12 @@ add-admin-user:
 	@echo "\n===> Adding administrative user to Apostrophe instance...\n"
 	node app @apostrophecms/user:add $(NAME) admin
 	@echo "\n===> Administrative user successfully added to Apostrophe instance.\n"
+
+install-express-configuration:
+	@echo "\n===> Installing express configuration file...\n"
+	mkdir -p ./modules/@apostrophecms/express && \
+		cp Private/modules/@apostrophecms/express/index.js modules/@apostrophecms/express/
+	@echo "\n===> Express configuration file successfully installed. Don't forget to set the instance secret!\n"
 
 help-updates:
 	@echo "Update options  - help: "

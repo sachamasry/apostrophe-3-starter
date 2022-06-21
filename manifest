@@ -1,7 +1,7 @@
-C Moved\sexpress\smodule,\scontaining\sthe\ssession\ssecret\skey,\sto\sPrivate,\sto\sbe\sset\sper\sproject.
-D 2022-06-21T18:03:22.367
+C Updated\sMakefile\swith\sa\starget\sto\sinstall\sthe\sexpress/index.js\sconfiguration\sfile
+D 2022-06-21T18:14:47.807
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile a7278f32a57df94a5c97d031b5358205e1b39aca47c46c6976d105cf87486ae8
+F Makefile 298d65172c6042b02fc061b169dff0d8879166cfbff0c37d42bd3e5476afa7a7
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -15,7 +15,7 @@ F Private/Logo/favicon_io/favicon-32x32.png 31ad22d223e08ae2d433707cbfd9f26d3f79
 F Private/Logo/favicon_io/favicon.ico 183d4bec8a7ac09c50d1401bb5f227974f11e8fec2f766a64984581a6ef7c7c6
 F Private/Logo/favicon_io/site.webmanifest 34efdeb36732fa99cd95b6b31e53d6a1370e0be251652c863d0aa12ca2a780fd
 F Private/modules/@apostrophecms/email/index.js cbb806075aab277f48d801fd440ca09cc42aa170b3d3962c8b74cd1ff61d89fa
-F Private/modules/@apostrophecms/express/index.js 313a54a0ae420127a2c7505e8f5ce72ed439d20db097425afbff3d9972a8a00b w modules/@apostrophecms/express/index.js
+F Private/modules/@apostrophecms/express/index.js 313a54a0ae420127a2c7505e8f5ce72ed439d20db097425afbff3d9972a8a00b
 F README.md 02955af889bd2c3074baa30763321f5096ab3858260c4d3e38ceeaeecba80f7d
 F app.js 5daa0b745519ce0c7a6368de700269dacf89ba9c178614465485a244c02b8ef5
 F data/local.js 4f6ff6d04397f4911680fe0d1d476f623e89e19924157888f1e93050560046f0
@@ -147,8 +147,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P de78b907dad5c8af4f86ff4e5a3da9eae9b33e689b33b7585876f8c84575ebe8
-R 5c13394ac9be15fcc367ba1fe4e87dea
+P 94561b54a0cf1a1407e54975dba79e00329440ef6745b46272c1635741a076e3
+R 3cab8650b739a7ee3950ebe5d3c8be43
 U sacha
-Z 1b96f4f8ac5b1b1ea8b14b7aa086d153
+Z 33f6bdf7266ea8392f89213d851c1edc
 # Remove this line to create a well-formed Fossil manifest.
