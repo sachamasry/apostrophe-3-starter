@@ -1,0 +1,11 @@
+<section data-section-with-background-widget
+         id="{{ data.widget.sectionId }}"
+         class="{{ data.widget.sectionClass }}"
+         {%- if data.widget.sectionStyle -%}style="{{ data.widget.sectionStyle }}"{%- endif -%}>
+    <div class="{{ data.widget.containerClass }}">
+        {% area data.widget, 'background' %}
+    </div>
+    <div class="container {{ data.wigdet.sectionContentsClass }}">
+        {% area data.widget, 'sectionContents' %}
+    </div>
+</section>

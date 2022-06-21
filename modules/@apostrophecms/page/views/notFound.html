@@ -1,0 +1,27 @@
+{#
+  Use this template to build out your 404 error pages. Like page templates,
+  it inherits a global layout.
+#}
+
+{% extends "layout.html" %}
+
+{% block title %}404 - Page not found{% endblock %}
+
+{% block main %}
+<main class="main-page-content--full-bleed">
+    <section class="section-page-body--full-bleed">
+        {%- if data.global._defaultPageNotFoundContent[0] -%}
+          {%- set content = data.global._defaultPageNotFoundContent[0] -%}
+          {% area content, 'body' %}
+        {%- else -%}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2">
+                    <p>We're sorry. We couldn't find the page you're looking for.</p>
+                </div>
+            </div>
+        </div>
+        {%- endif -%}
+    </section>
+</main>
+{% endblock %}

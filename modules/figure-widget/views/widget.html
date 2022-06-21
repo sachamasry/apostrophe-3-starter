@@ -1,0 +1,43 @@
+{%- if data.widget.alignFigure == 'left' -%}
+{%- set figureAlignmentClass = "figure--left-align" -%}
+{%- elif data.widget.alignFigure == 'right' -%}
+{%- set figureAlignmentClass = "figure--right-align" -%}
+{%- elif data.widget.alignFigure == 'centre' -%}
+{%- set figureAlignmentClass = "figure--centre" -%}
+{%- else -%}
+{%- set figureAlignmentClass = '' -%}
+{%- endif -%}
+
+{%- if data.widget.figureWidth == '20' -%}
+{%- set figureWidthClass = "figure--20-wide" -%}
+{%- elif data.widget.figureWidth == '25' -%}
+{%- set figureWidthClass = "figure--20-wide" -%}
+{%- elif data.widget.figureWidth == '33' -%}
+{%- set figureWidthClass = "figure--33-wide" -%}
+{%- elif data.widget.figureWidth == '40' -%}
+{%- set figureWidthClass = "figure--40-wide" -%}
+{%- elif data.widget.figureWidth == '50' -%}
+{%- set figureWidthClass = "figure--50-wide" -%}
+{%- elif data.widget.figureWidth == '60' -%}
+{%- set figureWidthClass = "figure--60-wide" -%}
+{%- elif data.widget.figureWidth == '66' -%}
+{%- set figureWidthClass = "figure--66-wide" -%}
+{%- elif data.widget.figureWidth == '75' -%}
+{%- set figureWidthClass = "figure--75-wide" -%}
+{%- elif data.widget.figureWidth == '80' -%}
+{%- set figureWidthClass = "figure--80-wide" -%}
+{%- else -%}
+{%- set figureWidthClass = "figure--100-wide" -%}
+{%- endif -%}
+
+<figure class="{% if data.widget.appendToFigureClass == false %}{{ data.widget.figureClass }}{% else %}figure {{ figureAlignmentClass }} {{ figureWidthClass }} {{ data.widget.figureClass }}{% endif %}"
+        {% if data.widget.figureStyle %}style="{{ data.widget.figureStyle }}"{% endif %}>
+    {% area data.widget, 'enclosedContent' %}
+    {%- if data.widget.displayCaption -%}
+    {%- if data.widget.figureCaption.items[0] -%}
+    <figcaption class="figure__caption figure-caption">
+        {% area data.widget, 'figureCaption' %}
+    </figcaption>
+    {%- endif -%}
+    {%- endif -%}
+</figure>

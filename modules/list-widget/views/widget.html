@@ -1,0 +1,35 @@
+{%- if data.widget.listType == 'ordered' -%}
+{%- set listTypeElement = 'ol' -%}
+{%- set listClass = '' -%}
+{%- elif data.widget.listType == 'inline' -%}
+{%- set listTypeElement = 'ul' -%}
+{%- set listClass = 'list-inline' -%}
+{%- set listItemClass = 'list-inline-item' -%}
+{%- else -%}
+{%- set listTypeElement = 'ul' -%}
+{%- set listClass = '' -%}
+{%- endif -%}
+
+{%- if data.widget.unorderedListType == 'none' -%}
+{%- set listTypeStyle = 'list-style-type: none;' -%}
+{%- elif data.widget.unorderedListType == 'circle' -%}
+{%- set listTypeStyle = 'list-style-type: circle;' -%}
+{%- elif data.widget.unorderedListType == 'square' -%}
+{%- set listTypeStyle = 'list-style-type: square;' -%}
+{%- elif data.widget.unorderedListType == 'custom' -%}
+{%- set listTypeStyle = 'list-style-type: \'' + data.widget.customListMarker + ' \'; list-style-position: outside;' -%}
+{%- else -%}
+{%- endif -%}
+
+<{{ listTypeElement }} data-list-widget
+{% if listTypeElement == 'ol' %}
+type="{{ data.widget.orderedListType }}"
+start="{{ data.widget.orderedListStart }}"
+{% if data.widget.reverseNumbering %}reversed{% endif %}
+{%- endif -%}
+{% if listClass %} class="{{ listClass }}"{%- endif -%}
+{%- if listTypeStyle -%}style="{{ listTypeStyle }}"{%- endif -%}>
+{%- for item in data.widget.listItems -%}
+<li {% if listItemClass %}class="{{ listItemClass }}"{% endif %}>{{ item.listItem }}</li>
+{%- endfor -%}
+</{{ listTypeElement }}>

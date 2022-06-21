@@ -1,0 +1,62 @@
+{
+  "name": "a3-starter",
+  "version": "1.0.0",
+  "description": "Apostrophe 3 Starter Site",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon",
+    "build": "NODE_ENV=production node app @apostrophecms/asset:build",
+    "serve": "NODE_ENV=production node app",
+    "release": "npm install && npm run build && node app @apostrophecms/migration:migrate"
+  },
+  "nodemonConfig": {
+    "delay": 1000,
+    "verbose": true,
+    "watch": [
+      "./app.js",
+      "./modules/**/*",
+      "./lib/**/*.js",
+      "./views/**/*.html"
+    ],
+    "ignoreRoot": [
+      ".git"
+    ],
+    "ignore": [
+      "locales/*.json",
+      "public/uploads",
+      "public/apos-frontend/*.js",
+      "data"
+    ],
+    "ext": "json, js, html, scss, vue"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apostrophecms/mp-blog"
+  },
+  "author": "Apostrophe Technologies, Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "@apostrophecms/anchors": "^1.0.0-beta",
+    "@apostrophecms/cli": "^3.1.1",
+    "@apostrophecms/event": "^1.0.0",
+    "@apostrophecms/form": "^1.0.0",
+    "@apostrophecms/login-totp": "^1.0.0-beta",
+    "@apostrophecms/open-graph": "^1.2.0",
+    "@apostrophecms/piece-type-exporter": "^1.0.0-beta.1",
+    "@apostrophecms/piece-type-importer": "^1.0.0",
+    "@apostrophecms/redirect": "^1.2.0",
+    "@apostrophecms/scheduled-publishing": "^1.0.2",
+    "@apostrophecms/seo": "^1.1.1",
+    "@apostrophecms/sitemap": "^1.0.1",
+    "apostrophe": "^3.0.0",
+    "nodemailer-mailjet-transport": "^1.0.4",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-apostrophe": "^3.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.7"
+  }
+}

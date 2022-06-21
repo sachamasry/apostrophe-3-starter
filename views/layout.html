@@ -1,0 +1,247 @@
+{# Automatically extends the right outer layout and also handles AJAX siutations #}
+{%- extends data.outerLayout -%}
+
+{%- block startHead -%}
+<link rel="preload" href="{{ apos.asset.url('/modules/asset/fonts/f4735dc6-b565-42ea-b1da-485d4297a042/fonts/YesevaOne-Regularv2.woff2') }}" as="font" type="font/woff2">
+<link rel="preload" href="{{ apos.asset.url('/modules/asset/fonts/a4d4972a-1eb0-4a90-8bad-9eff863fded5/fonts/GlacialIndifference-Regular.woff2') }}" as="font" type="font/woff2">
+<link rel="preload" href="{{ apos.asset.url('/modules/asset/fonts/themify.woff?-fvbane') }}" as="font" type="font/woff">
+{%- endblock -%}
+
+{%- set title = data.piece.title or data.page.title %}
+{%- block title -%}
+{{- title -}}
+{%- if not title -%}
+{{- apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') -}}
+{%- endif -%}
+{%- endblock -%}
+
+{%- block extraHead -%}
+<link rel="apple-touch-icon" sizes="57x57" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-57x57.png') }}">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-60x60.png') }}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-72x72.png') }}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-76x76.png') }}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-114x114.png') }}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-120x120.png') }}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-144x144.png') }}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-152x152.png') }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ apos.asset.url('/modules/asset/images/favicon/apple-icon-180x180.png') }}">
+<link rel="icon" type="image/png" sizes="192x192"  href="{{ apos.asset.url('/modules/asset/images/favicon/android-icon-192x192.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ apos.asset.url('/modules/asset/images/favicon/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ apos.asset.url('/modules/asset/images/favicon/favicon-96x96.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ apos.asset.url('/modules/asset/images/favicon/favicon-16x16.png') }}">
+<link rel="manifest" href="{{ apos.asset.url('/modules/asset/images/favicon/manifest.json') }}">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="{{ apos.asset.url('/modules/asset/images/favicon/ms-icon-144x144.png') }}">
+<meta name="theme-color" content="#ffffff">
+{%- endblock -%}
+
+{%- block beforeMain -%}
+<div class="{% if data.user -%}logged-in{%- endif %} position-relative"
+     style="height: calc(100vw/var(--cover-image-ar));">
+    <header class="main-navigation fixed-top site-header" id="mainmenu-area">
+        {# header class="bp-header" #}
+
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid align-items-center">
+                <a class="navbar-brand" href="{{ data.baseUrl }}">
+                    <img src="/images/logo.jpg"
+                         loading="lazy"
+                         decoding="async"
+                         alt="Logo" class="navigation-bar__site-logo">
+                </a>
+                {# Toggler #}
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarmain"
+                        aria-controls="navbarmain"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="ti-menu-alt"></span>
+                </button>
+
+                {# Collapse #}
+                <div class="collapse navbar-collapse text-center text-lg-left"
+                     id="navbarmain">
+                    {# Links #}
+                    <ul class="navbar-nav ml-auto">
+                        {%- for item in data.global.primaryNav %}
+                          {%- set linkPath = '' -%}
+                          {%- set linkTitle = '' -%}
+                          {%- if item.linkType === 'dropdown' -%}
+                            {%- set linkPath = null -%}
+                            {%- set linkTitle = item.title -%}
+                          {%- elif item.linkType === 'page' and item._page and item._page[0] -%}
+                            {%- set linkPath = item._page[0]._url -%}
+                            {%- set linkTitle = item._page[0].title -%}
+                          {%- elif item.linkType === 'article' and item._article and item._article[0] -%}
+                            {%- set linkPath = item._article[0]._url -%}
+                            {%- set linkTitle = item._article[0].title -%}
+                          {%- elif item.linkType === 'author' and item._author and item._author[0] -%}
+                            {%- set linkPath = item._author[0]._url -%}
+                            {%- set linkTitle = item._author[0].title -%}
+                          {%- elif item.linkType === 'topic' and item._topic and item._topic[0] -%}
+                            {%- set linkPath = item._topic[0]._url -%}
+                            {%- set linkTitle = item._topic[0].title -%}
+                          {%- elif item.linkType === 'tag' and item._tag and item._tag[0] -%}
+                            {%- set linkPath = item._tag[0]._url -%}
+                            {%- set linkTitle = item._tag[0].title -%}
+                          {%- elif item.linkType === 'file' and item._file and item._file[0] -%}
+                            {%- set fileObject = apos.attachment.first(item._file) -%}
+                            {%- set linkPath = apos.attachment.url(fileObject) -%}
+                            {%- set linkTitle = item._file[0].title -%}
+                          {%- elif item.linkType === 'image' and item._image and item._image[0] -%}
+                            {%- set imageObject = apos.attachment.first(item._image) -%}
+                            {%- set linkPath = apos.attachment.url(imageObject) -%}
+                            {%- set linkTitle = item._image[0].title -%}
+                          {%- elif item.linkType === 'custom' -%}
+                            {%- set linkPath = item.customUrl -%}
+                          {%- endif -%}
+
+                          {%- if item.dropdown and item.secondLevel -%}
+                        <li class="nav-item dropdown">
+                            <a href="{{- linkPath -}}"
+                               {% if item.target[0] === '_blank' %}target="_blank"{% endif %}
+                               class="nav-link dropdown-toggle navy-blue-text smoth-scroll"
+                               id="navbarDropdown"
+                               role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">{{- item.label or linkTitle -}}</a>
+                            <ul class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                                {%- for secondLevelItem in item.secondLevel -%}
+                                  {%- set linkPath = '' -%}
+                                  {%- set linkTitle = '' -%}
+                                  {%- if secondLevelItem.linkType === 'page' and secondLevelItem._page and secondLevelItem._page[0] -%}
+                                    {%- set linkPath = secondLevelItem._page[0]._url -%}
+                                    {%- set linkTitle = secondLevelItem._page[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'article' and secondLevelItem._article and secondLevelItem._article[0] -%}
+                                    {%- set linkPath = secondLevelItem._article[0]._url -%}
+                                    {%- set linkTitle = secondLevelItem._article[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'author' and secondLevelItem._author and secondLevelItem._author[0] -%}
+                                    {%- set linkPath = secondLevelItem._author[0]._url -%}
+                                    {%- set linkTitle = secondLevelItem._author[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'topic' and secondLevelItem._topic and secondLevelItem._topic[0] -%}
+                                    {%- set linkPath = secondLevelItem._topic[0]._url -%}
+                                    {%- set linkTitle = secondLevelItem._topic[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'tag' and secondLevelItem._tag and secondLevelItem._tag[0] -%}
+                                    {%- set linkPath = secondLevelItem._tag[0]._url -%}
+                                    {%- set linkTitle = secondLevelItem._tag[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'file' and secondLevelItem._file and secondLevelItem._file[0] -%}
+                                    {%- set fileObject = apos.attachment.first(secondLevelItem._file) -%}
+                                    {%- set linkPath = apos.attachment.url(fileObject) -%}
+                                    {%- set linkTitle = secondLevelItem._file[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'image' and secondLevelItem._image and secondLevelItem._image[0] -%}
+                                    {%- set imageObject = apos.attachment.first(secondLevelItem._image) -%}
+                                    {%- set linkPath = apos.attachment.url(imageObject) -%}
+                                    {%- set linkTitle = secondLevelItem._image[0].title -%}
+                                  {%- elif secondLevelItem.linkType === 'custom' -%}
+                                    {%- set linkPath = secondLevelItem.customUrl -%}
+                                  {%- endif -%}
+                                <li>
+                                    {%- if secondLevelItem.linkType == 'dropdown-divider' -%}
+                                    <hr class="dropdown-divider">
+                                    {%- else -%}
+                                    <a class="dropdown-item"
+                                       {% for attribute in secondLevelItem.additionalAttributes %}
+                                       {{ attribute.attributeKey }}="{{ attribute.value }}" 
+                                       {% endfor %}
+                                       href="{{- linkPath -}}">{{- secondLevelItem.label or linkTitle -}}</a></li>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                            </ul>
+                        {{ secondLevelItem.customUrl }}
+                        {%- else -%}
+                        <li class="nav-item">
+                            <a href="{{- linkPath -}}"
+                               {% if item.target[0] === '_blank' %}target="_blank"{% endif %}
+                               {% for attribute in item.additionalAttributes %}
+                               {{ attribute.attributeKey }}="{{ attribute.value }}" 
+                               {% endfor %}
+                               class="nav-link navy-blue-text smoth-scroll">{{- item.label or linkTitle -}}</a>
+                        {%- endif -%}
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+        {%- endblock -%}
+
+        {%- block main -%}
+    <main class="main-page-content">
+        {#
+        Usually, your page templates in the @apostrophecms/pages module will override
+        this block. It is safe to assume this is where your page-specific content
+        should go.
+        #}
+    </main>
+        {%- endblock -%}
+
+        {%- block afterMain -%}
+    <footer class="footer">
+        {%- if data.global._defaultFooterContent[0] -%}
+        {%- set footer = data.global._defaultFooterContent[0] -%}
+        {% area footer, 'body' %}
+        {%- endif -%}
+        
+        <div class="footer__containing-block container">
+            <div class="footer__small-print container">
+                <div class="row footer-btm pt-4">
+                    <div class="col-lg-6">
+                        {# Copyright #}
+                        <p class="footer-small-print__copyright-notice footer-copy">{{- data.global.footerCopyrightNotice -}}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        {# Policies #}
+                        <p class="footer-small-print__policies text-left text-lg-right">
+                            {%- for item in data.global.policiesNav -%}
+                            {%- set linkPath = '' %}
+                            {%- set linkTitle = '' %}
+                            {%- if item.linkType === 'page' and item._page and item._page[0] %}
+                            {%- set linkPath = item._page[0]._url %}
+                            {%- set linkTitle = item._page[0].title %}
+                            {%- elif item.linkType === 'article' and item._article and item._article[0] -%}
+                            {%- set linkPath = item._article[0]._url -%}
+                            {%- set linkTitle = item._article[0].title -%}
+                            {%- elif item.linkType === 'author' and item._author and item._author[0] -%}
+                            {%- set linkPath = item._author[0]._url -%}
+                            {%- set linkTitle = item._author[0].title -%}
+                            {%- elif item.linkType === 'topic' and item._topic and item._topic[0] -%}
+                            {%- set linkPath = item._topic[0]._url -%}
+                            {%- set linkTitle = item._topic[0].title -%}
+                            {%- elif item.linkType === 'tag' and item._tag and item._tag[0] -%}
+                            {%- set linkPath = item._tag[0]._url -%}
+                            {%- set linkTitle = item._tag[0].title -%}
+                            {%- elif item.linkType === 'file' and item._file and item._file[0] -%}
+                            {%- set fileObject = apos.attachment.first(item._file) -%}
+                            {%- set linkPath = apos.attachment.url(fileObject) -%}
+                            {%- set linkTitle = item._file[0].title -%}
+                            {%- elif item.linkType === 'image' and item._image and item._image[0] -%}
+                            {%- set imageObject = apos.attachment.first(item._image) -%}
+                            {%- set linkPath = apos.attachment.url(imageObject) -%}
+                            {%- set linkTitle = item._image[0].title -%}
+                            {%- elif item.linkType === 'custom' %}
+                            {%- set linkPath = item.customUrl %}
+                            {%- endif %}
+                            <a href="{{- linkPath -}}"
+                               {% for attribute in item.additionalAttributes %}
+                               {{ attribute.attributeKey }}="{{ attribute.value }}" 
+                               {% endfor %}
+                               {%- if item.target[0] === '_blank' -%} target="_blank" {%- endif -%}
+                            >{{- item.label or linkTitle -}}</a>
+                            {%- if not loop.last %} | {% endif -%}
+                            {%- endfor -%}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="{{ apos.asset.url('/modules/asset/bootstrap.bundle.min.js') }}"></script>
+    <div id="apos-data-container"
+         data-hcaptcha-library-url="{{ data.global.hCaptchaLibraryUrl }}">
+    </div>
+</div>{# Close .bp-wrapper #}
+{%- endblock -%}

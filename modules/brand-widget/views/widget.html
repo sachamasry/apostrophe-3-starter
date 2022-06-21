@@ -1,0 +1,38 @@
+{%- import 'image-widget:image-layout-fragment.html' as imageLayoutFragment -%}
+
+{%- set loadingAttribute = null -%}
+{%- if data.widget.loadingAttribute == 'eager' -%}
+  {%- set loadingAttribute = 'eager' -%}
+{%- elif data.widget.loadingAttribute == 'lazy' -%}
+  {%- set loadingAttribute = 'lazy' -%}
+{%- else -%}
+  {%- set loadingAttribute = 'auto' -%}
+{%- endif -%}
+
+{%- set decodingAttribute = null -%}
+{%- if data.widget.loadingAttribute == 'eager' -%}
+  {%- set decodingAttribute = 'sync' -%}
+{%- elif data.widget.loadingAttribute == 'lazy' -%}
+  {%- set decodingAttribute = 'async' -%}
+{%- else -%}
+  {%- set decodingAttribute = 'auto' -%}
+{%- endif -%}
+
+<section data-brand-widget>
+    <div class="{% if data.widget.sectionContainer %}container{% endif %}">
+        <div class="row align-content-center pt-2">
+            <div class="col-md-12">
+                <div class="graphic-header">
+                    {%- if data.widget.brandType == 'masthead' -%}
+                    {%- endif -%}
+
+                    <img src="/images/logo.jpg"
+                         alt="{{- data.global.siteTitle -}}"
+                         {%- if loadingAttribute -%} loading="{{ loadingAttribute }}"{%- endif -%}
+                         {%- if decodingAttribute -%} decoding="{{ decodingAttribute }}"{%- endif -%}
+                         class="graphic-header__image img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
