@@ -64,7 +64,7 @@ run-dev:
 
 add-admin-user:
 	@echo "\n===> Adding administrative user to Apostrophe instance...\n"
-	node app apostrophe-users:add $(NAME) admin
+	node app @apostrophecms/user:add $(NAME) admin
 	@echo "\n===> Administrative user successfully added to Apostrophe instance.\n"
 
 help-updates:

@@ -1,7 +1,7 @@
-C Updated\sMakefile,\screating\sadd-admin-user\starget,\sto\screate\snew\sApostrophe\sadministrative\susers
-D 2022-06-21T17:51:00.977
+C Corrected\sApostrophe\sadd\suser\scommand,\sas\sdocumentation\shas\san\serror
+D 2022-06-21T17:52:48.016
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile 83faecaa66a28b831a3d626ae6420ae11c669bffba5b7352f94647ef12dfbf2a
+F Makefile a7278f32a57df94a5c97d031b5358205e1b39aca47c46c6976d105cf87486ae8
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -147,8 +147,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 4aeab0620c82bf112aff093ad6414bf99655d00382ffe622c6cb35a27099d386
-R 2feb466a9f9bb705a3afd7e9a7a2ea1e
+P 79ca509ce10f696b7e486bb5510d508441d88224f4bb3c12be01a8df0fbc5e8f
+R 81a86bf4f6d0b30762629e8a6553b037
 U sacha
-Z 75a4bc7dbb51b570070844a8aa961021
+Z 0e8a7080b116e2d16c8c69cf538c1a30
 # Remove this line to create a well-formed Fossil manifest.
