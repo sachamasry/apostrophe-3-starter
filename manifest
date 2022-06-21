@@ -1,7 +1,7 @@
-C Updated\sMakefile\sto\sincorporate\starget\sto\ssymbolically\slink\sApostrophe's\srelease-id\sfile\sto\sFossil\sSCM's\smanifest.uuid.\n\n\nRemoved\sTOTP\sfrom\sapp.js,\sto\sensure\sit's\sdisabled\sby\sdefault,\sand\scan\seasily\sbe\sre-enabled.\n\nMoved\semail\sconfiguration\sfile\sout\sof\smodules/\sdirectory,\sto\snew\sPrivate/modules/\sto\sensure\sthe\stemplate\sis\seasily\savailable\sto\sthose\swho\sneed\sit,\swithout\sbeing\sin\sthe\sway\sand\sgenerating\serror\smessages\sto\sthose\swho\sdon't\sneed\sit.
-D 2022-06-21T17:42:43.250
+C Updated\sMakefile,\screating\sadd-admin-user\starget,\sto\screate\snew\sApostrophe\sadministrative\susers
+D 2022-06-21T17:51:00.977
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile bd6c8ff27970843acd81c65a501b468a92fffde31a8509558d2db33cd1118708
+F Makefile 83faecaa66a28b831a3d626ae6420ae11c669bffba5b7352f94647ef12dfbf2a
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -14,7 +14,7 @@ F Private/Logo/favicon_io/favicon-16x16.png 5f5f6470c60be364b31410dd6a819f947ef1
 F Private/Logo/favicon_io/favicon-32x32.png 31ad22d223e08ae2d433707cbfd9f26d3f795624dd6199ecb7be6ef6f0d01820
 F Private/Logo/favicon_io/favicon.ico 183d4bec8a7ac09c50d1401bb5f227974f11e8fec2f766a64984581a6ef7c7c6
 F Private/Logo/favicon_io/site.webmanifest 34efdeb36732fa99cd95b6b31e53d6a1370e0be251652c863d0aa12ca2a780fd
-F Private/modules/@apostrophecms/email/index.js cbb806075aab277f48d801fd440ca09cc42aa170b3d3962c8b74cd1ff61d89fa w modules/@apostrophecms/email/index.js
+F Private/modules/@apostrophecms/email/index.js cbb806075aab277f48d801fd440ca09cc42aa170b3d3962c8b74cd1ff61d89fa
 F README.md 02955af889bd2c3074baa30763321f5096ab3858260c4d3e38ceeaeecba80f7d
 F app.js 5daa0b745519ce0c7a6368de700269dacf89ba9c178614465485a244c02b8ef5
 F data/local.js 4f6ff6d04397f4911680fe0d1d476f623e89e19924157888f1e93050560046f0
@@ -147,8 +147,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P dd5645503974350b95a99c2b1942468daa4780f71203cbabb5b2d4a76b45e43d
-R 2edc5232c70703bc455d24d756b4000e
+P 4aeab0620c82bf112aff093ad6414bf99655d00382ffe622c6cb35a27099d386
+R 2feb466a9f9bb705a3afd7e9a7a2ea1e
 U sacha
-Z a2db728d483079376c9c586bdb2b22c8
+Z 75a4bc7dbb51b570070844a8aa961021
 # Remove this line to create a well-formed Fossil manifest.

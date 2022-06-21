@@ -47,6 +47,7 @@ help:
 	@echo "    help-updates							Get help with update directives"
 	@echo "    help-db									Get help with database directives"
 	@echo "    help-filesystem					Get help with Apostrophe instance filesystem directives"
+	@echo "    add-admin-user						Add administrative user to Apostrophe instance. Use 'make NAME=user-name add-admin-user' when invoking"
 
 run:
 	@echo "\n===> Locally running Apostrophe in PRODUCTION mode...\n"
@@ -60,6 +61,11 @@ link-release-id-to-fossil-manifest-uuid:
 run-dev:
 	@echo "\n===> Locally running Apostrophe in DEVELOPMENT mode...\n"
 	PORT=$(DEV_SERVER_PORT) npm run dev
+
+add-admin-user:
+	@echo "\n===> Adding administrative user to Apostrophe instance...\n"
+	node app apostrophe-users:add $(NAME) admin
+	@echo "\n===> Administrative user successfully added to Apostrophe instance.\n"
 
 help-updates:
 	@echo "Update options  - help: "
