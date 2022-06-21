@@ -61,7 +61,6 @@ module.exports = {
                         'link': {},
                         'button': {},
                         'card': {},
-                        'horizontal-card': {},
                         'table': {},
                     }
                 }

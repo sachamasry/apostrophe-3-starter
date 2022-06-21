@@ -26,7 +26,6 @@ module.exports = {
                         'horizontal-rule': {},
                         'verse': {},
                         'card': {},
-                        'horizontal-card': {},
                         'brand': {},
                     }
                 }

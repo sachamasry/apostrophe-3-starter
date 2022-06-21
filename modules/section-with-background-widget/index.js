@@ -71,7 +71,6 @@ module.exports = {
                         'link': {},
                         'button': {},
                         'card': {},
-                        'horizontal-card': {},
                         'brand': {},
                         'newsletter-subscription': {},
                         'table': {},
