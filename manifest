@@ -1,5 +1,5 @@
-C Updated\sMakefile\swith\sa\starget\sto\sinstall\sthe\sexpress/index.js\sconfiguration\sfile
-D 2022-06-21T18:14:47.807
+C Created\sa\ssingle\srule\sin\sthe\scustom\sstylesheet\sto\sprevent\sthe\smenu\sfrom\ssticking\sto\sthe\stop\swhen\sa\suser\sis\slogged\sin.
+D 2022-06-21T18:41:22.498
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
 F Makefile 298d65172c6042b02fc061b169dff0d8879166cfbff0c37d42bd3e5476afa7a7
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
@@ -56,6 +56,7 @@ F modules/asset/public/fonts/themify.woff 46f06ad3e55009e5c63a23e8a11c61d2e95474
 F modules/asset/public/images/ajax-loader.gif d3400dbf4d6b2dbfd10482d444e1369e6e39caf155a4e55be5da3ec030a489e2
 F modules/asset/ui/public/10-bootstrap.min.css edd047dd959164a49a6ab5538e22698f3b6ee922e82ec6187c97c0409cb73e22
 F modules/asset/ui/public/30-themify-icons.css 7dcbabe63c858c653fd0ddcc7c746487534cd0be459e51ab3ace823e909ee4bf
+F modules/asset/ui/public/99-stylesheet.css 7ed9c2488f94ab394fe88a1e47a83adc48d98d8ffd9aded765e163a1711739d7
 F modules/asset/ui/src/index.js 2b893ecd386d2af920ee2b3f98a2dae90e4d3b4ab3507c23bdf2f383107a03fe
 F modules/asset/ui/src/index.scss 02e079c5ace52807d10878c861055d931c3d4106e7d9f251d9eba72e67436470
 F modules/asset/ui/src/scss/_layout.scss 4ea06daab440cab314058c6242ca6e32fe27c285ef44575a5adfddd7ab2cf444
@@ -147,8 +148,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 94561b54a0cf1a1407e54975dba79e00329440ef6745b46272c1635741a076e3
-R 3cab8650b739a7ee3950ebe5d3c8be43
+P 7abdeb5e3fc123d9a96eefe950156260796d3a1eff65361120423a815834e9b4
+R e60676e62d45b6970570bfb9586efbf8
 U sacha
-Z 33f6bdf7266ea8392f89213d851c1edc
+Z c6662d9ab8a195c3f20bf9327cf2887b
 # Remove this line to create a well-formed Fossil manifest.
