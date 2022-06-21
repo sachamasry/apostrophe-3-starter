@@ -1,7 +1,7 @@
-C Started\swork\son\sdeprecating\sthe\s'horizontal-card'\swidget.\n\nRemoved\shorizontal-card\sas\san\soption\sfrom\sall\sdependent\swidgets,\sin\spreparation\sfor\srecreating\shorizontal-card\swithin\sthe\smore\sgeneral\sand\sflexible\s'card'\swidget.
-D 2022-06-21T17:02:27.971
+C Updated\sMakefile\swith\sdevelopment\sserver\sport
+D 2022-06-21T17:21:47.205
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile b773fde54e9e301deab2935ed6a7f27af1898ec61a27a4a2261f68168f604778
+F Makefile 60b3d1bc3949a8169c383cc2c35756b83cbb3ffe2ae21ca99cd149cfd4b97aa0
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -147,8 +147,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 390141c4ba558f6e224bc9fa6e06e83e9cb95b1d52e67436dbbfc16f696f8152
-R a7fefd888a51d7cba605d1d1cc7c10ca
+P 20c38fef3f8b25d48cc6d5d98c889c066dfa2761eecedaf15294b83328d9db0f
+R 7c482f3a676e4b39663d52696aa31940
 U sacha
-Z c4809db8634728f74bd8745153213833
+Z c4c9e81a75429bf4ca6c33e20ba6206a
 # Remove this line to create a well-formed Fossil manifest.

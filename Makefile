@@ -7,6 +7,7 @@ REPO_UPDATE_COMMAND											=	git pull
 NPM_INSTALL_COMMAND											= npm install
 NPM_BUILD_COMMAND												= npm run build
 APOS_MIGRATE_COMMAND										= node app @apostrophecms/migration:migrate
+DEV_SERVER_PORT													= 3100
 
 PROCESS_MANAGER													= pm2
 MANAGED_PROCESS_NAME_INSTANCE_1 				= ""
@@ -51,7 +52,7 @@ run:
 
 run-dev:
 	@echo "\n===> Locally running Apostrophe in DEVELOPMENT mode...\n"
-	npm run dev
+	PORT=$(DEV_SERVER_PORT) npm run dev
 
 help-updates:
 	@echo "Update options  - help: "
