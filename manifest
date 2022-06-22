@@ -1,7 +1,7 @@
-C Created\sa\ssingle\srule\sin\sthe\scustom\sstylesheet\sto\sprevent\sthe\smenu\sfrom\ssticking\sto\sthe\stop\swhen\sa\suser\sis\slogged\sin.
-D 2022-06-21T18:41:22.498
+C Updated\sMakefile\swith\sliteral\stab\sstops\sand\sseveral\scommand\scorrections
+D 2022-06-22T21:57:41.081
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
-F Makefile 298d65172c6042b02fc061b169dff0d8879166cfbff0c37d42bd3e5476afa7a7
+F Makefile ba75391ae491526a80a7b2b004ba5283fc7996e70642d8581c3e962811a55187
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F Private/Logo/Apostrophe-3-starter-128w.jpg 8fb4b10680631dcb464468ad693cb9f54ab9d5505053035e74ac917a1ac4d1d1
 F Private/Logo/Apostrophe-3-starter.jpg 0625cd80e237495c897afc7a3758eb39cebe4f7c1db639fe65703fa2d3afb00a
@@ -148,8 +148,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 7abdeb5e3fc123d9a96eefe950156260796d3a1eff65361120423a815834e9b4
-R e60676e62d45b6970570bfb9586efbf8
+P 0bbe6fe236f93c5bd6a760894617b2e1b4210dcc75f63607e47c601d989184cd
+R 459f9d232ce935977173f9909825df46
 U sacha
-Z c6662d9ab8a195c3f20bf9327cf2887b
+Z 6f1fb00eb24d54719ac835e186776bcd
 # Remove this line to create a well-formed Fossil manifest.
