@@ -1,5 +1,5 @@
-C Updated\sMakefile\swith\sliteral\stab\sstops\sand\sseveral\scommand\scorrections
-D 2022-06-22T21:57:41.081
+C Updated\sApostrophe\sto\s3.29.1\n\nUpdated\s'article'\sdefinition\sto\sstart\simplementing\sof\sApostrophe's\snew\sexpanded\swidget\spreview,\screating\sa\sset\sof\snew\sgroupings,\sinspired\sby\sthose\simplemented\sin\sWordpress.\n\nAdded\san\soptional\s'description'\soption\sto\sthe\s'figure'\swidget\sto\spresent\sa\sdescriptive\shelp\stext\sto\sthe\sfigure\swidget.
+D 2022-10-18T17:17:01.098
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
 F Makefile ba75391ae491526a80a7b2b004ba5283fc7996e70642d8581c3e962811a55187
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
@@ -41,7 +41,7 @@ F modules/@apostrophecms/sitemap/index.js 0ee50556bf9097e7121e4793662eaf2828a8e5
 F modules/article-page/index.js a4b8270a62b21b28ffa3c24ebd3cc198da9e533ad632dedc87d000ac3485d957
 F modules/article-page/views/index.html 9e2d4fa4061f0a99b86f1cefda3f7aebe14a44e48d8ca7a28868514a4d0acc3f
 F modules/article-page/views/show.html 28f7df31f45e491bac9bc53f0d20298db77cac23d2561805e17adbc557b4b393
-F modules/article/index.js 1a7e2534baa5659d130981fd005ee89074fe28d8650d8b782209da841871b3e5
+F modules/article/index.js af93e33213fd7c67d5947f0e11e4e9bf23cbe8cfa688dd510d12282e0953e414
 F modules/aside-widget/index.js f52b27de8e869ac4f370a365add6784adafb161b15f1495d5a3ca10dc5826f62
 F modules/aside-widget/views/widget.html 52bbb73bd800b0fbcf324befd8a915a1444a1d9cde75d7b0e2e7476fbb2e0669
 F modules/asset/index.js 0d2b4a01dc77fc09db69f781177d280bf422f7dd8ef712e998d9fe6e4d8341f0
@@ -92,7 +92,7 @@ F modules/default-page/views/page-layout-fragment.html 413a80d214fca17ddb44f6452
 F modules/default-page/views/page.html a95937a2dca7367af99f91c7fd7802b94f9c7eecb1e7a6203e94a0a715aee2e3
 F modules/definition-list-widget/index.js 920a046778bd590b4ebc51805a5a4d24fde79f16edc73710cba64ad7a13be8f7
 F modules/definition-list-widget/views/widget.html b1b725267681eb49b189705ae7b46c6f1ac8ed7cb9bfec954be071fa01a3b1d5
-F modules/figure-widget/index.js bd2dcc3979c02883172632e35c2cb3522a3ae34ac3c74499c1b0ec90852925c3
+F modules/figure-widget/index.js d2035b4a6e61c1fb12140382e8911bf793b4cb0b1ac649774e295915938f6be4
 F modules/figure-widget/views/widget.html 9a7ed2f692585db5297a628c770da05d2889d202e15d7535652940fa68975d5b
 F modules/horizontal-rule-widget/index.js 06ca485fe8b90c9abb40cad3eea1d9b5928c1e4641d2ea93cf7e2d3053990f81
 F modules/horizontal-rule-widget/views/widget.html 220280282723d15531a1d02b6b95ddad21d0d0f5922c0f694e55282216e64842
@@ -148,8 +148,8 @@ F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb533
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 0bbe6fe236f93c5bd6a760894617b2e1b4210dcc75f63607e47c601d989184cd
-R 459f9d232ce935977173f9909825df46
+P 7b4fd75c587645b63c8c28369b43f9a7e17791dcdda59a55a4992fc4b254cf10
+R c316613cda27eb46b7829c64b4ee2f97
 U sacha
-Z 6f1fb00eb24d54719ac835e186776bcd
+Z 7bd36c442dc1fa39691b35de710a2265
 # Remove this line to create a well-formed Fossil manifest.

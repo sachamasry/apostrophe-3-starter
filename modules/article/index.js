@@ -78,36 +78,69 @@ module.exports = {
                 type: 'area',
                 label: 'Article text',
                 options: {
-                    widgets: {
-                        '@apostrophecms/rich-text': {},
-                        'image': {
-                            size: 'one-sixth',
-                            dimensionAttrs: true
+                    expanded: true,
+                    groups: {
+                        text: {
+                            label: 'Text',
+                            columns: 2,
+                            widgets: {
+                                '@apostrophecms/rich-text': {},
+                                'lead-paragraph': {},
+                                'list': {},
+                                'definition-list': {},
+                                'list-group': {},
+                                'quote': {},
+                                'verse': {},
+                                'link': {},
+                            }
                         },
-                        'figure': {},
-                        '@apostrophecms/video': {},
-                        '@apostrophecms/html': {},
-                        'section-with-background': {},
-                        'container-block': {},
-                        'columns': {},
-                        'carousel': {},
-                        'cover-block': {},
-                        'spacer': {},
-                        'horizontal-rule': {},
-                        'verse': {},
-                        'quote': {},
-                        'lead-paragraph': {},
-                        'list': {},
-                        'list-group': {},
-                        'definition-list': {},
-                        'link': {},
-                        'button': {},
-                        'card': {},
-                        'brand': {},
-                        'newsletter-subscription': {},
-                        'table': {},
-                        'aside': {},
-                    }
+                        media: {
+                            label: 'Media',
+                            columns: 2,
+                            widgets: {
+                                'figure': {},
+                                '@apostrophecms/video': {},
+                                'cover-block': {},
+                            }
+                        },
+                        layout: {
+                            label: 'Design and layout',
+                            widgets: {
+                                'columns': {},
+                                'container-block': {},
+                                'spacer': {},
+                                'horizontal-rule': {},
+                                'button': {},
+                                'card': {},
+                                'section-with-background': {},
+                                'carousel': {},
+                            }
+                        },
+                        special: {
+                            label: 'Special content',
+                            widgets: {
+                                'brand': {},
+                                'newsletter-subscription': {},
+                            }
+                        },
+                        embeds: {
+                            label: 'Embeds',
+                            widgets: {
+                            }
+                        },
+                        advanced: {
+                            label: 'Advanced layout options',
+                            widgets: {
+                                'image': {
+                                    size: 'one-sixth',
+                                    dimensionAttrs: true
+                                },
+                                'table': {},
+                                'aside': {},
+                                '@apostrophecms/html': {},
+                            }
+                        }
+                    },
                 }
             }
         },

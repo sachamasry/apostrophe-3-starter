@@ -2,6 +2,7 @@ module.exports = {
     extend: '@apostrophecms/widget-type',
     options: {
         label: 'Figure',
+        description: 'The figure element is commonly used for images, but is intended to be used with any type of self-contained content, with an optional caption', 
         className: false,
         icon: 'image-icon',
         dimensionAttrs: false,
