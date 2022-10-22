@@ -1,5 +1,5 @@
-C Updated\sApostrophe\sto\s3.29.1\n\nUpdated\s'article'\sdefinition\sto\sstart\simplementing\sof\sApostrophe's\snew\sexpanded\swidget\spreview,\screating\sa\sset\sof\snew\sgroupings,\sinspired\sby\sthose\simplemented\sin\sWordpress.\n\nAdded\san\soptional\s'description'\soption\sto\sthe\s'figure'\swidget\sto\spresent\sa\sdescriptive\shelp\stext\sto\sthe\sfigure\swidget.
-D 2022-10-18T17:17:01.098
+C Added\sofficial\sApostrophe\sCMS\sblog\sextension\sto\sthe\sstarter\sproject.
+D 2022-10-22T00:02:29.773
 F LICENSE fcd8243e65ee7f500a4cdf08cc135756365f2679a8f972a7e5c74812250f8c6c
 F Makefile ba75391ae491526a80a7b2b004ba5283fc7996e70642d8581c3e962811a55187
 F Private/Logo/Apostrophe-3-starter-128w-optim.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
@@ -17,7 +17,7 @@ F Private/Logo/favicon_io/site.webmanifest 34efdeb36732fa99cd95b6b31e53d6a1370e0
 F Private/modules/@apostrophecms/email/index.js cbb806075aab277f48d801fd440ca09cc42aa170b3d3962c8b74cd1ff61d89fa
 F Private/modules/@apostrophecms/express/index.js 313a54a0ae420127a2c7505e8f5ce72ed439d20db097425afbff3d9972a8a00b
 F README.md 02955af889bd2c3074baa30763321f5096ab3858260c4d3e38ceeaeecba80f7d
-F app.js 5daa0b745519ce0c7a6368de700269dacf89ba9c178614465485a244c02b8ef5
+F app.js 699f1986027e8951a87b4a9f73036b8c3145447c97aad89b48213eb47bb38e02
 F data/local.js 4f6ff6d04397f4911680fe0d1d476f623e89e19924157888f1e93050560046f0
 F deployment/README 9fc36bd1ca4f0fb6d15338faf6d8e451f222bfd22f8411310dfa719c580a2a88
 F deployment/dependencies f8099b0956a1c26f16532189c3549fbc4a1830f8f1d7aa572ded47712e1fe0e7
@@ -34,7 +34,7 @@ F modules/@apostrophecms/global/index.js 98371ebeb566e68be2d0020260d9775cdf2d030
 F modules/@apostrophecms/home-page/index.js 509f95de3f8a91da504ac48b8cab8d96e23ec12b35afe07d68385a7bbbfcf52f
 F modules/@apostrophecms/home-page/views/page.html b1a18cc57c690dae945b8efdf117b61763ce033d0b09831a615477f28cf7fdf0
 F modules/@apostrophecms/login/index.js 11c71085155b1cfed40f728097d60a2c1cb399a6890056a12931a8ee8f42edb2
-F modules/@apostrophecms/page/index.js 318da0610e8983d5e02c6d54114467ad917848d933c25bec1912dc8e34e4a438
+F modules/@apostrophecms/page/index.js 1934feaa8b271bd10fd860d85f63177c734f05e873c1b083912716e6e4029efe
 F modules/@apostrophecms/page/views/notFound.html 83efec254041cdbd7249f3f1b34455c638164a3524bbe5ccdef457518eb949c0
 F modules/@apostrophecms/rich-text-widget/index.js 791a674b900d97ac7b1e3535a6c56ba57cfaf9b246629d035d817751dc07037a
 F modules/@apostrophecms/sitemap/index.js 0ee50556bf9097e7121e4793662eaf2828a8e5c4e38cd761d81f6062ccacc291
@@ -143,13 +143,13 @@ F modules/website-section-page/index.js bddf693869e2d34224b6fb25230ef5fab9d2cfca
 F modules/website-section-page/views/index.html a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a
 F modules/website-section-page/views/show.html a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a
 F modules/website-section/index.js eb5c43677d020a406ce9a8c3dacf9dabb3ff181b1ca9f8f829a3c16b5f345291
-F package.json abb7f603d07829cb47d696a7aefadac861190b5847abedb605192355611a8a77
+F package.json 9825aea39c9a6edc7fab71e426724e29243507ecb99e3dce6d6272884ee51116
 F public/images/logo.jpg 7b5fbb23061ec4098d6c7ff96561d10e2d9cd79137cebd4128cb53391cbfde76
 F scripts/sync-down 3ea001736835de315ff6782df7d8372635bb5811f2a4c15d05a29ccb5ddb024b x
 F scripts/sync-up 3b9f3bb88b8c539e908382fd7808d72069ca7873a98d5725da2b4bbd509fa422 x
 F views/layout.html 4cf1d71d9cfbda2691f776d1266c58e3338a233389bb12a8cb8067fce04ba3ff
-P 7b4fd75c587645b63c8c28369b43f9a7e17791dcdda59a55a4992fc4b254cf10
-R c316613cda27eb46b7829c64b4ee2f97
+P 34529003492c0456d308f33006a6d376fa2835342cc94026c67a8ed1714967eb
+R 7c66a9939a6fb73c50ced1efcf6d5388
 U sacha
-Z 7bd36c442dc1fa39691b35de710a2265
+Z 5b8450a7683f5945d3c83891f04fb0b6
 # Remove this line to create a well-formed Fossil manifest.

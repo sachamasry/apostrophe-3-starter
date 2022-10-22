@@ -52,6 +52,11 @@ module.exports = {
             {
                 name: 'website-section-page',
                 label: 'Website sectioning page'
+            },
+            // Adding the blog page type
+            {
+                name: '@apostrophecms/blog-page',
+                label: 'Blog Page'
             }
         ]
     }
