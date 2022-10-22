@@ -1,36 +1,53 @@
 ########################################################################
 #
-# Set variables needed for the specific project
+# Aposrophe 3 Makefile
 #
-REPO_UPDATE_COMMAND											=	git pull
+# This Makefile is designed to manage all automatable tasks found
+# necessary in setting up, maintaining, upgrading and deploying
+# Apostrophe 3 instances.
+#
+########################################################################
+#
+# Set variables needed for this Apostrophe 3 instance
+#
+MONGO_DB_NAME				= ""
+PRODUCTION_DB_BACKUP_LOCATION		= mongodb-prod-backup
+DEV_DB_BACKUP_LOCATION			= mongodb-dev-backup
+LOCAL_TEMP_LOCATION			= /tmp
+REMOTE_TEMP_LOCATION			= /tmp
 
-NPM_INSTALL_COMMAND											= npm install
-NPM_BUILD_COMMAND												= npm run build
-APOS_MIGRATE_COMMAND										= node app @apostrophecms/migration:migrate
+MANAGED_PROCESS_NAME_INSTANCE_1 	= ""
+MANAGED_PROCESS_NAME_INSTANCE_2 	= ""
 
-PROCESS_MANAGER													= pm2
-MANAGED_PROCESS_NAME_INSTANCE_1 				= ""
-MANAGED_PROCESS_NAME_INSTANCE_2 				= ""
+DEV_SERVER_PORT				= 3100
 
-REMOTE_NSTANCE_BACKOFF_TIME							= 60
+REMOTE_USER				= nodeapps
+REMOTE_SITE_URL				= ""
+SSH_DESTINATION				= $(REMOTE_USER)@$(REMOTE_SITE_URL)
 
-REMOTE_USER															= nodeapps
-REMOTE_SITE_URL													= ""
-SSH_DESTINATION													= $(REMOTE_USER)@$(REMOTE_SITE_URL)
+########################################################################
+#
+# Set variables needed to manage the project overall
+#
+REPO_UPDATE_COMMAND			= git pull
+FOSSIL_COMMIT_CHECKSUM_FILE		= manifest.uuid
 
-MONGO_DB_NAME														= ""
-PRODUCTION_DB_BACKUP_LOCATION						= mongodb-prod-backup
-DEV_DB_BACKUP_LOCATION									= mongodb-dev-backup
-LOCAL_TEMP_LOCATION											= /tmp
-REMOTE_TEMP_LOCATION										= /tmp
-LOCAL_PRODUCTION_DB_BACKUP_LOCATION			= $(LOCAL_TEMP_LOCATION)/$(PRODUCTION_DB_BACKUP_LOCATION)
-LOCAL_DEV_DB_BACKUP_LOCATION						= $(LOCAL_TEMP_LOCATION)/$(DEV_DB_BACKUP_LOCATION)
-REMOTE_PRODUCTION_DB_BACKUP_LOCATION		= $(REMOTE_TEMP_LOCATION)/$(PRODUCTION_DB_BACKUP_LOCATION)
-REMOTE_DEV_DB_BACKUP_LOCATION						= $(REMOTE_TEMP_LOCATION)/$(DEV_DB_BACKUP_LOCATION)
+NPM_INSTALL_COMMAND			= npm install
+NPM_BUILD_COMMAND			= npm run build
+APOS_MIGRATE_COMMAND			= node app @apostrophecms/migration:migrate
 
-INSTANCE_DIR														= ""
-REMOTE_INSTANCE_LOCATION								= /home/$(REMOTE_USER)/$(INSTANCE_DIR)
-LOCAL_INSTANCE_LOCATION									= 
+PROCESS_MANAGER				= pm2
+
+REMOTE_INSTANCE_BACKOFF_TIME		= 60
+
+LOCAL_PRODUCTION_DB_BACKUP_LOCATION	= $(LOCAL_TEMP_LOCATION)/$(PRODUCTION_DB_BACKUP_LOCATION)
+LOCAL_DEV_DB_BACKUP_LOCATION		= $(LOCAL_TEMP_LOCATION)/$(DEV_DB_BACKUP_LOCATION)
+REMOTE_PRODUCTION_DB_BACKUP_LOCATION	= $(REMOTE_TEMP_LOCATION)/$(PRODUCTION_DB_BACKUP_LOCATION)
+REMOTE_DEV_DB_BACKUP_LOCATION		= $(REMOTE_TEMP_LOCATION)/$(DEV_DB_BACKUP_LOCATION)
+
+INSTANCE_DIR				= ""
+REMOTE_INSTANCE_LOCATION		= /home/$(REMOTE_USER)/$(INSTANCE_DIR)
+LOCAL_INSTANCE_LOCATION			= 
 
 all: help
 
@@ -39,30 +56,49 @@ test:
 
 help:
 	@echo "Make options help: "
-	@echo "    run											Run production server"
-	@echo "    run-dev									Run development server"
-	@echo "    help-updates							Get help with update directives"
-	@echo "    help-db									Get help with database directives"
-	@echo "    help-filesystem					Get help with Apostrophe instance filesystem directives"
+	@echo "    run					Run production server"
+	@echo "    link-release-id-to-fossil-manifest-uuid	Link Apostrophe's release-id file to Fossil SCM's manifest.uuid"
+	@echo "    run-dev				Run development server"
+	@echo "    help-updates				Get help with update directives"
+	@echo "    help-db				Get help with database directives"
+	@echo "    help-filesystem			Get help with Apostrophe instance filesystem directives"
+	@echo "    add-admin-user			Add administrative user to Apostrophe instance. Use 'make NAME=user-name add-admin-user' when invoking"
+	@echo "    install-express-configuration	Install express configuration file"
 
 run:
 	@echo "\n===> Locally running Apostrophe in PRODUCTION mode...\n"
 	npm -- run serve
 
+link-release-id-to-fossil-manifest-uuid:
+	@echo "\n===> Linking ./repo-id file to Fossil's manifest.uuid, containing the commit checksum...\n"
+	ln -s $(FOSSIL_COMMIT_CHECKSUM_FILE) release-id
+	@echo "\n===> Successfully linked ./repo-id to Fossil's manifest.uuid, containing the commit checksum.\n"
+
 run-dev:
 	@echo "\n===> Locally running Apostrophe in DEVELOPMENT mode...\n"
-	npm run dev
+	PORT=$(DEV_SERVER_PORT) npm run dev
+
+add-admin-user:
+	@echo "\n===> Adding administrative user to Apostrophe instance...\n"
+	node app @apostrophecms/user:add $(NAME) admin
+	@echo "\n===> Administrative user successfully added to Apostrophe instance.\n"
+
+install-express-configuration:
+	@echo "\n===> Installing express configuration file...\n"
+	mkdir -p ./modules/@apostrophecms/express && \
+		cp Private/modules/@apostrophecms/express/index.js modules/@apostrophecms/express/
+	@echo "\n===> Express configuration file successfully installed. Don't forget to set the instance secret!\n"
 
 help-updates:
 	@echo "Update options  - help: "
-	@echo "    update-apostrophe-dev							Locally update Apostrophe instance"
-	@echo "    update-site-code										Locally update Apostrophe site from repository"
-	@echo "    remotely-update-site-code					Remotely update Apostrophe site from repository"
-	@echo "    install-and-update-npm-packages		Locally install and update NPM, migrate database"
-	@echo "    remotely-install-and-update-npm-packages		Remotely install and update NPM, migrate database"
-	@echo "    remotely-start-site								Remotely start stopped site"
-	@echo "    remotely-stop-site									Remotely stop site"
-	@echo "    remotely-restart-site							Remotely restart started site"
+	@echo "    update-apostrophe-dev		Locally update Apostrophe instance"
+	@echo "    update-site-code			Locally update Apostrophe site from repository"
+	@echo "    remotely-update-site-code		Remotely update Apostrophe site from repository"
+	@echo "    install-and-update-npm-packages	Locally install and update NPM, migrate database"
+	@echo "    remotely-install-and-update-npm-packages	Remotely install and update NPM, migrate database"
+	@echo "    remotely-start-site			Remotely start stopped site"
+	@echo "    remotely-stop-site			Remotely stop site"
+	@echo "    remotely-restart-site		Remotely restart started site"
 
 update-apostrophe-dev:
 	@echo "\n===> Updating Apostrophe development instance...\n"
@@ -86,57 +122,57 @@ install-and-update-npm-packages:
 
 remotely-install-and-update-npm-packages:
 	@echo "\n===> Remotely installing and updating npm packages...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $($NPM_INSTALL_COMMAND) && $(NPM_BUILD_COMMAND) && $(APOS_MIGRATE_COMMAND)"
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $($NPM_INSTALL_COMMAND) && $(NPM_BUILD_COMMAND) && $(APOS_MIGRATE_COMMAND)"
 	@echo "\n===> Remote npm packages successfully installed and updated.\n"
 
 remotely-start-site:
 	@echo "\n===> Remotely starting site...\n"
 	@echo "\n=====> Remotely starting instance 1...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) start $(MANAGED_PROCESS_NAME_INSTANCE_1)"
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) start $(MANAGED_PROCESS_NAME_INSTANCE_1)"
 	@echo "\n=====> Sleeping before starting instance 2...\n"
 	sleep $(REMOTE_INSTANCE_BACKOFF_TIME)
 	@echo "\n=====> Remotely starting instance 2...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) start $(MANAGED_PROCESS_NAME_INSTANCE_2)"
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) start $(MANAGED_PROCESS_NAME_INSTANCE_2)"
 	@echo "\n===> Successfuly started remote site.\n"
 
 remotely-stop-site:
 	@echo "\n===> Remotely stopping site...\n"
 	@echo "\n=====> Remotely stopping instance 1...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) stop $(MANAGED_PROCESS_NAME_INSTANCE_1)"
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) stop $(MANAGED_PROCESS_NAME_INSTANCE_1)"
 	@echo "\n=====> Sleeping before stopping instance 2...\n"
 	sleep $(REMOTE_INSTANCE_BACKOFF_TIME)
 	@echo "\n=====> Remotely stopping instance 2...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) stop $(MANAGED_PROCESS_NAME_INSTANCE_2)"
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) stop $(MANAGED_PROCESS_NAME_INSTANCE_2)"
 	@echo "\n===> Successfuly stopped remote site.\n"
 
 remotely-restart-site:
 	@echo "\n===> Remotely restarting site...\n"
 	@echo "\n=====> Remotely restarting instance 1...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) restart $(MANAGED_PROCESS_NAME_INSTANCE_1)" 
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) restart $(MANAGED_PROCESS_NAME_INSTANCE_1)" 
 	@echo "\n=====> Sleeping before restarting instance 2...\n"
 	sleep $(REMOTE_INSTANCE_BACKOFF_TIME)
 	@echo "\n=====> Remotely restarting instance 2...\n"
-	ssh $(SSH_DESTINATION) "$(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) restart $(MANAGED_PROCESS_NAME_INSTANCE_2)" 
+	ssh $(SSH_DESTINATION) "cd $(REMOTE_INSTANCE_LOCATION) && $(PROCESS_MANAGER) restart $(MANAGED_PROCESS_NAME_INSTANCE_2)" 
 	@echo "\n===> Successfuly restarted remote site.\n"
 
 help-db:
 	@echo "Update options - database manipulation: "
-	@echo "    remotely-backup-production-db				Remotely back up remote production database"
-	@echo "    backup-dev-db												Back up local production database"
-	@echo "    restore-dev-db-dry-run								Dry run locally restore development database"
-	@echo "    restore-dev-db												Locally restore development database"
-	@echo "    locally-restore-prod-db-dry-run			Dry run locally restore production database"
-	@echo "    locally-restore-prod-db							Locally restore production database"
-	@echo "    remotely-restore-prod-db-dry-run			Dry run remotely restore production database"
-	@echo "    remotely-restore-prod-db							Remotely restore production database"
-	@echo "    remotely-restore-dev-db-dry-run			Dry run remotely restore development database"
-	@echo "    remotely-restore-dev-db							Remotely restore development database"
-	@echo "    copy-dev-db-to-live-server						Copy local development database to live server"
-	@echo "    copy-prod-db-from-live-server				Copy production database from live server to local"
-	@echo "    drop-dev-db													Drop local development database"
-	@echo "    remotely-drop-prod-db								Remotely drop live server production database"
-	@echo "    deploy-dev-db-to-production					Deploy local database to production server"
-	@echo "    deploy-prod-db-to-development				Deploy production database to local development server"
+	@echo "    remotely-backup-production-db		Remotely back up remote production database"
+	@echo "    backup-dev-db				Back up local production database"
+	@echo "    restore-dev-db-dry-run			Dry run locally restore development database"
+	@echo "    restore-dev-db				Locally restore development database"
+	@echo "    locally-restore-prod-db-dry-run		Dry run locally restore production database"
+	@echo "    locally-restore-prod-db			Locally restore production database"
+	@echo "    remotely-restore-prod-db-dry-run		Dry run remotely restore production database"
+	@echo "    remotely-restore-prod-db			Remotely restore production database"
+	@echo "    remotely-restore-dev-db-dry-run		Dry run remotely restore development database"
+	@echo "    remotely-restore-dev-db			Remotely restore development database"
+	@echo "    copy-dev-db-to-live-server			Copy local development database to live server"
+	@echo "    copy-prod-db-from-live-server		Copy production database from live server to local"
+	@echo "    drop-dev-db					Drop local development database"
+	@echo "    remotely-drop-prod-db			Remotely drop live server production database"
+	@echo "    deploy-dev-db-to-production			Deploy local database to production server"
+	@echo "    deploy-prod-db-to-development		Deploy production database to local development server"
 
 remotely-backup-production-db:
 	@echo "\n===> Remotely backing up production database...\n"
@@ -214,10 +250,10 @@ deploy-prod-db-to-development: copy-prod-db-from-live-server backup-dev-db drop-
 
 help-filesystem:
 	@echo "Update options - filesystem manipulation: "
-	@echo "    sync-uploads-directory-local-push-dry-run				Synchronise remote uploads directory with local development, by rsync push, dry run"
-	@echo "    sync-uploads-directory-local-push								Synchronise remote uploads directory with local development, by rsync push"
-	@echo "    sync-uploads-directory-remote-pull-dry-run				Synchronise local uploads directory with remote by rsync pull, dry run"
-	@echo "    sync-uploads-directory-remote-pull								Synchronise local uploads directory with remote by rsync pull"
+	@echo "    sync-uploads-directory-local-push-dry-run	Synchronise remote uploads directory with local development, by rsync push, dry run"
+	@echo "    sync-uploads-directory-local-push		Synchronise remote uploads directory with local development, by rsync push"
+	@echo "    sync-uploads-directory-remote-pull-dry-run	Synchronise local uploads directory with remote by rsync pull, dry run"
+	@echo "    sync-uploads-directory-remote-pull		Synchronise local uploads directory with remote by rsync pull"
 
 sync-uploads-directory-local-push-dry-run:
 	@echo "\n===> Synchronising Uploads directory by local push (DRY RUN)...\n"

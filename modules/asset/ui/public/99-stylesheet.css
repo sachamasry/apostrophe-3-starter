@@ -1,0 +1,6 @@
+/* Bootstrap has the main navigation 'sticking' to the top of the viewport
+   which makes Apostrophe's admin navigation impossible to interact with.
+   When a user is logged in, make the header 'static' instead */
+.logged-in > .main-navigation {
+    position: static;
+}

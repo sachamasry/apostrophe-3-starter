@@ -81,7 +81,6 @@ module.exports = {
                                     'link': {},
                                     'button': {},
                                     'card': {},
-                                    'horizontal-card': {},
                                     'brand': {},
                                 }
                             }

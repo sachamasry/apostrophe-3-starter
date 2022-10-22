@@ -84,8 +84,13 @@ require('apostrophe')({
                 withType: 'article',
             },
         },
+        // The main blog piece type module
+        '@apostrophecms/blog': {},
+        // The blog page module
+        '@apostrophecms/blog-page': {},
         '@apostrophecms/sitemap': {},
-        '@apostrophecms/login-totp': {},
+        // Enable the following line if you want to have Time-based one-time password as 2FA
+        //'@apostrophecms/login-totp': {},
         '@apostrophecms/anchors': {},
         // The main form module
         '@apostrophecms/form': {},
